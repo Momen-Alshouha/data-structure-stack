@@ -23,6 +23,9 @@
     <ClInclude Include="StackItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="StackIterator.h">
       <Filter>Header Files</Filter>
     </ClInclude>

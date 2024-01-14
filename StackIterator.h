@@ -1,26 +1,28 @@
-#pragma once
-#include "StackItem.h"
+#include"StackItem.h"
 
-template <typename T = int, size_t MaxSize = 100>
+template <typename T = int>
 class StackIterator {
 private:
-    size_t currentIndex;
-    const StackItem<T>* items;
+    StackItem<T>* current;
 
 public:
-   
-    StackIterator(const StackItem<T>* start, size_t index) : items(start), currentIndex(index) {}
+    // Constructor
+    StackIterator(StackItem<T>* start) : current(start) {}
 
-   
+    // Overloaded != operator for comparison
     bool operator!=(const StackIterator<T>& other) const {
-        return currentIndex != other.currentIndex;
+        return current != other.current;
     }
 
+    // Move to the next item in the stack
     void operator++() {
-        ++currentIndex;
+        if (current) {
+            current = current->next;
+        }
     }
-   
+
+    // Get the current item
     T operator*() const {
-        return items[currentIndex].data;
+        return current->data;
     }
 };

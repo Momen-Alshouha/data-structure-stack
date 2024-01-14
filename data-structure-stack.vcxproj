@@ -130,6 +130,7 @@
     <ClCompile Include="data-structure-stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="StackItem.h" />
     <ClInclude Include="StackIterator.h" />
   </ItemGroup>

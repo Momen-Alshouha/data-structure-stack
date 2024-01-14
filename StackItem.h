@@ -1,21 +1,12 @@
-#pragma once
 
-template <typename T = int, size_t MaxSize = 100>
+#pragma once
+template <typename T = int>
 class StackItem {
-    
-    T _data;
 
 public:
-    
-    StackItem(T value) : data(value) {}
+    T data;
+    StackItem<T>* next;
 
-    T GetData() {
-        return T;
-    }
+    StackItem(T value) : data(value), next(nullptr) {};
 
-    T SetData(T Data) {
-        _data = Data;
-    }
-
-    __declspec(property(get = GetData, put = SetData)) T data;
 };
