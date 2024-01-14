@@ -41,8 +41,17 @@ public:
         }
     }
 
-    __declspec(property(get = GetTop)) T top;
+    size_t GetSize() {
+        size_t size = 0;
+        for (iterator itr = _begin(); itr != _end(); ++itr)
+        {
+            size++;
+        }
+        return size;
+    }
 
+    __declspec(property(get = GetTop)) T top;
+    __declspec(property (get = GetSize)) size_t size;
 
     void Push(T value) {
         ptrItem newItem = new StackItem<T>(value);

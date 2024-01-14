@@ -9,7 +9,8 @@ int main()
 	Stack.Push(1);
 	Stack.Push(2);
 	Stack.Push(3);
-	cout << Stack.top << endl;
+	cout <<"Top Item : "<< Stack.top << endl;
 	Stack.Print();
+	cout << "Stack Size : " << Stack.size << endl;
 
 }
