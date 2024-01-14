@@ -3,26 +3,29 @@
 template <typename T = int>
 class StackIterator {
 private:
-    StackItem<T>* current;
+
+    using ptrItem = StackItem<T>*;
+
+    ptrItem _current;
 
 public:
-    // Constructor
-    StackIterator(StackItem<T>* start) : current(start) {}
+
+    StackIterator(ptrItem start) : _current(start) {}
 
     // Overloaded != operator for comparison
-    bool operator!=(const StackIterator<T>& other) const {
-        return current != other.current;
+    bool operator!=(const StackIterator<T> other) const {
+        return _current != other._current;
     }
 
     // Move to the next item in the stack
     void operator++() {
-        if (current) {
-            current = current->next;
+        if (_current) {
+            _current = _current->next;
         }
     }
 
     // Get the current item
     T operator*() const {
-        return current->data;
+        return _current->data;
     }
 };

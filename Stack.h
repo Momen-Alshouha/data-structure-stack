@@ -7,9 +7,10 @@ class Stack {
 
 private:
     
-    using iterator = StackIterator<T>;
-
-    StackItem<T>* _ptrtop;
+    using iterator = StackIterator<T>; /// make iterator as alias of StackIterator<T>
+    using ptrItem = StackItem<T>*;
+    
+    ptrItem _ptrtop;
     
 
     // Get an iterator pointing to the beginning of the stack
@@ -44,7 +45,7 @@ public:
 
 
     void Push(T value) {
-        StackItem<T>* newItem = new StackItem<T>(value);
+        ptrItem newItem = new StackItem<T>(value);
         newItem->next = _ptrtop;
         _ptrtop = newItem;
     }
@@ -53,7 +54,7 @@ public:
         if (IsEmpty()) {
             throw std::underflow_error("Stack underflow");
         }
-        StackItem<T>* temp = _ptrtop;
+        ptrItem temp = _ptrtop;
         _ptrtop = _ptrtop->next;
         delete temp;
     }
