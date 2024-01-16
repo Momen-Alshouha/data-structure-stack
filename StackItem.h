@@ -19,7 +19,11 @@ public:
     }
 
     StackItem<T>* GetNext() {
-        return _ptrnext;
+        if (_ptrnext!=nullptr)
+        {
+            return _ptrnext;
+        }
+        return nullptr;
     }
 
     void SetNext(StackItem<T> *ptrnext) {

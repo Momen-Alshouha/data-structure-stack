@@ -2,7 +2,7 @@
 #include "StackIterator.h"
 using namespace std;
 
-template <typename T = int , size_t MAX_SIZE = 100>
+template <typename T = int , size_t MAX_SIZE = 10> // int is template default argument , default max is 10
 class Stack {
 
 private:
@@ -29,19 +29,17 @@ public:
     Stack() : _ptrtop(nullptr) {}
 
     ~Stack() {
-        while (!IsEmpty()) {
-            Pop();
-        }
+        Clear();
     }
 
-    T GetTop() {
+    T GetTop() const {
         if (_ptrtop !=nullptr)
         {
             return _ptrtop->data;
         }
     }
 
-    size_t GetSize() {
+    size_t GetSize() const {
         size_t size = 0;
         for (iterator itr = _begin(); itr != _end(); ++itr)
         {
@@ -51,9 +49,13 @@ public:
     }
 
     __declspec(property(get = GetTop)) T top;
-    __declspec(property (get = GetSize)) size_t size;
+    __declspec(property (get = GetSize))size_t size;
 
     void Push(T value) {
+        if (IsFull())
+        {
+            throw std::overflow_error("Stack overflow");
+        } 
         ptrItem newItem = new StackItem<T>(value);
         newItem->next = _ptrtop;
         _ptrtop = newItem;
@@ -81,6 +83,28 @@ public:
         return _ptrtop == nullptr;
     }
 
+    bool IsFull() const {
+        return GetSize() == MAX_SIZE;
+    }
+
+    bool IsExist(T DataToCheck) const {
+        for (iterator itr = _begin(); itr != _end(); ++itr) {
+            if (*itr == DataToCheck) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    void Clear() {
+        while (!IsEmpty()) {
+            Pop();
+        }
+    }
+
+  
+
     void Print() {
         if (_ptrtop != nullptr) {
             cout << endl;
@@ -88,7 +112,9 @@ public:
                 cout <<"| " << *itr<<" |" << '\n';
             }
             cout << "-----\n";
+            return;
         }
+        cout << "Stack Is Empty!\n";
     }
 
 };

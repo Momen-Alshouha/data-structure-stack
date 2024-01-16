@@ -12,6 +12,18 @@ public:
 
     StackIterator(ptrItem start) : _current(start) {}
 
+    ptrItem GetItem() {
+        return _current;
+    }
+
+    ptrItem SetItem(ptrItem) {
+        return _current=ptrItem;
+    }
+
+
+    __declspec(property(get = GetItem, put = SetItem)) ptrItem current;
+
+    
     // Overloaded != operator for comparison
     bool operator!=(const StackIterator<T> other) const {
         return _current != other._current;
