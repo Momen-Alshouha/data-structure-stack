@@ -16,8 +16,8 @@ This repository contains a C++ implementation of a stack data structure using a 
 
 The `StackItem` class represents individual elements in the stack. Each item holds:
 
-- `data`: Data of type T.
-- `next`: Pointer to the next item.
+- `_data`: Data of type T.
+- `_ptrNext`: Pointer to the next item.
 
 #### StackIterator Class
 
